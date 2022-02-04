@@ -20,4 +20,5 @@ go get -u github.com/FITO3000/fit-go-maven
 ## References
 
 <https://maven.apache.org/pom.html>
+
 <https://maven.apache.org/xsd/maven-4.0.0.xsd>
