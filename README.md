@@ -14,3 +14,6 @@ To update **fit-go-maven** use go get -u to retrieve the latest version of **fit
 ```
 go get -u github.com/FITO3000/fit-go-maven
 ```
+
+## References
+https://maven.apache.org/pom.html
