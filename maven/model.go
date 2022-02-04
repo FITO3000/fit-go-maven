@@ -13,9 +13,15 @@ type Project struct {
 	// The Basics
 	Parent *Parent `xml:"parent,omitempty"`
 	Coordinates
-	Packaging            string                `xml:"packaging,omitempty"`
+	Packaging     string `xml:"packaging,omitempty"`
+	Name          string `xml:"name,omitempty"`
+	Description   string `xml:"description,omitempty"`
+	Url           string `xml:"url,omitempty"`
+	InceptionYear string `xml:"inceptionYear,omitempty"`
+
 	DependencyManagement *DependencyManagement `xml:"dependencyManagement,omitempty"`
 	Dependencies         *Dependencies         `xml:"dependencies,omitempty"`
+	Properties           *Properties           `xml:"properties,omitempty"`
 	Modules              *Modules              `xml:"modules,omitempty"`
 }
 
@@ -38,7 +44,9 @@ type Modules struct {
 	Elements []string `xml:"module,omitempty"`
 }
 
-//Properties
+type Properties struct {
+	Entries map[string]string
+}
 
 /*
 	<!-- Build Settings -->
@@ -46,10 +54,6 @@ type Modules struct {
 	  <reporting>...</reporting>
 
 	  <!-- More Project Information -->
-	  <name>...</name>
-	  <description>...</description>
-	  <url>...</url>
-	  <inceptionYear>...</inceptionYear>
 	  <licenses>...</licenses>
 	  <organization>...</organization>
 	  <developers>...</developers>
