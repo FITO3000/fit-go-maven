@@ -47,6 +47,76 @@ func TestX(t *testing.T) {
 		},
 	}
 
+	pom.Build = &Build{
+		Directory:             "c:/dir",
+		OutputDirectory:       "c:/dir",
+		FinalName:             "final-name",
+		TestOutputDirectory:   "c:/dir",
+		SourceDirectory:       "c:/dir",
+		ScriptSourceDirectory: "c:/temp",
+		TestSourceDirectory:   "c:/",
+		Resources: &Resources{
+			Elements: []Resource{
+				{
+					TargetPath: "target-path-1",
+					Filtering:  "filtering-1",
+					Directory:  "dir-1",
+					Includes: &Includes{
+						Elements: []string{"include-1", "include-2"},
+					},
+				},
+				{
+					TargetPath: "target-path-2",
+					Filtering:  "filtering-2",
+					Directory:  "dir-2",
+					Includes: &Includes{
+						Elements: []string{"include-1", "include-2"},
+					},
+					Excludes: &Excludes{
+						Elements: []string{"exclude-1", "exclude-2"},
+					},
+				},
+			},
+		},
+		TestResources: &TestResources{
+			Elements: []Resource{
+				{
+					TargetPath: "target-path-1",
+					Filtering:  "filtering-1",
+					Directory:  "dir-1",
+					Includes: &Includes{
+						Elements: []string{"include-1", "include-2"},
+					},
+				},
+				{
+					TargetPath: "target-path-2",
+					Filtering:  "filtering-2",
+					Directory:  "dir-2",
+					Includes: &Includes{
+						Elements: []string{"include-1", "include-2"},
+					},
+					Excludes: &Excludes{
+						Elements: []string{"exclude-1", "exclude-2"},
+					},
+				},
+			},
+		},
+		PluginManagement: &PluginManagement{
+			Plugins: &Plugins{
+				[]Plugin{
+					{
+						Coordinates: Coordinates{
+							GroupID:    "g",
+							ArtifactID: "a",
+							Version:    "v",
+						},
+						Extensions: true,
+					},
+				},
+			},
+		},
+	}
+
 	properties := make(map[string]string)
 	properties["p1"] = "value-1"
 	properties["p2"] = "value-2"

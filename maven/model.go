@@ -23,6 +23,7 @@ type Project struct {
 	Dependencies         *Dependencies         `xml:"dependencies,omitempty"`
 	Properties           *Properties           `xml:"properties,omitempty"`
 	Modules              *Modules              `xml:"modules,omitempty"`
+	Build                *Build                `xml:"build,omitempty"`
 }
 
 type Parent struct {
@@ -46,6 +47,56 @@ type Modules struct {
 
 type Properties struct {
 	Entries map[string]string
+}
+
+type Build struct {
+	Directory             string            `xml:"directory,omitempty"`
+	OutputDirectory       string            `xml:"outputDirectory,omitempty"`
+	FinalName             string            `xml:"finalName,omitempty"`
+	TestOutputDirectory   string            `xml:"testOutputDirectory,omitempty"`
+	SourceDirectory       string            `xml:"sourceDirectory,omitempty"`
+	ScriptSourceDirectory string            `xml:"scriptSourceDirectory,omitempty"`
+	TestSourceDirectory   string            `xml:"testSourceDirectory,omitempty"`
+	Resources             *Resources        `xml:"resources,omitempty"`
+	TestResources         *TestResources    `xml:"testResources,omitempty"`
+	PluginManagement      *PluginManagement `xml:"pluginManagement,omitempty"`
+}
+
+type Resources struct {
+	Elements []Resource `xml:"resource,omitempty"`
+}
+
+type Resource struct {
+	TargetPath string    `xml:"targetPath,omitempty"`
+	Filtering  string    `xml:"filtering,omitempty"`
+	Directory  string    `xml:"directory,omitempty"`
+	Includes   *Includes `xml:"includes,omitempty"`
+	Excludes   *Excludes `xml:"excludes,omitempty"`
+}
+
+type Includes struct {
+	Elements []string `xml:"include,omitempty"`
+}
+
+type Excludes struct {
+	Elements []string `xml:"exclude,omitempty"`
+}
+
+type TestResources struct {
+	Elements []Resource `xml:"testResource,omitempty"`
+}
+
+type PluginManagement struct {
+	Plugins *Plugins `xml:"plugins,omitempty"`
+}
+
+type Plugins struct {
+	Elements []Plugin `xml:"plugin,omitempty"`
+}
+
+type Plugin struct {
+	Coordinates
+	Extensions bool `xml:"extensions,omitempty"`
 }
 
 /*
