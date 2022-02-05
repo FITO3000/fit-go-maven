@@ -96,31 +96,15 @@ type Plugins struct {
 
 type Plugin struct {
 	Coordinates
-	Extensions bool `xml:"extensions,omitempty"`
+	Extensions    bool           `xml:"extensions,omitempty"`
+	Dependencies  *Dependencies  `xml:"dependencies,omitempty"`
+	Inherited     bool           `xml:"inherited,omitempty"`
+	Configuration *Configuration `xml:"configuration,omitempty"`
 }
 
-/*
-	<!-- Build Settings -->
-	  <build>...</build>
-	  <reporting>...</reporting>
-
-	  <!-- More Project Information -->
-	  <licenses>...</licenses>
-	  <organization>...</organization>
-	  <developers>...</developers>
-	  <contributors>...</contributors>
-
-	  <!-- Environment Settings -->
-	  <issueManagement>...</issueManagement>
-	  <ciManagement>...</ciManagement>
-	  <mailingLists>...</mailingLists>
-	  <scm>...</scm>
-	  <prerequisites>...</prerequisites>
-	  <repositories>...</repositories>
-	  <pluginRepositories>...</pluginRepositories>
-	  <distributionManagement>...</distributionManagement>
-	  <profiles>...</profiles>
-*/
+type Configuration struct {
+	// TODO: continue
+}
 
 type Dependencies struct {
 	Elements []Dependency `xml:"dependency,omitempty"`
